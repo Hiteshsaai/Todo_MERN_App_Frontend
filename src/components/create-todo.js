@@ -145,7 +145,6 @@ class CreateTodo extends Component {
                         value = "Create Todo"
                         className = "btn btn-dark"
                         onClick = {this.onChangeTodoCreationDate}/>
-
                 </div>
                 </form>
             </div>
@@ -154,4 +153,4 @@ class CreateTodo extends Component {
 }
 
 
-export default CreateTodo
+export default CreateTodo;
