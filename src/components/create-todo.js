@@ -79,9 +79,11 @@ class CreateTodo extends Component {
 
     render(){
         return(
+            // Header 
             <div style = {{marginTop : "20px"}}>
                 <h3> Create New Todo</h3>
                 <form onSubmit= {this.onSubmit}>
+                {/* // Description Form */}
                 <div class="form-group">
                     <input 
                         type="text" 
@@ -92,6 +94,8 @@ class CreateTodo extends Component {
                 </div>
                 </form>
                 <form onSubmit= {this.onSubmit}>
+                {/* // Responsibility Form */}
+
                 <div class="form-group">
                     <input 
                         type="text" 
