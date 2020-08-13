@@ -95,7 +95,6 @@ class CreateTodo extends Component {
                 </form>
                 <form onSubmit= {this.onSubmit}>
                 {/* // Responsibility Form */}
-
                 <div class="form-group">
                     <input 
                         type="text" 
@@ -104,6 +103,7 @@ class CreateTodo extends Component {
                         value = {this.state.todo_responsible}
                         onChange = {this.onChangeTodoResposible}/>
                 </div>
+                {/* // Priority Form  High*/}
                 <div class="custom-control custom-radio">
                     <input 
                         type="radio" 
@@ -115,6 +115,7 @@ class CreateTodo extends Component {
                         onChange = {this.onChangeTodoPriority}/>
                     <label class="custom-control-label" for="customRadio1">High</label>
                 </div>
+                {/* // Priority Form  Medium*/}
                 <div class="custom-control custom-radio">
                     <input 
                         type="radio" 
@@ -126,6 +127,7 @@ class CreateTodo extends Component {
                         onChange = {this.onChangeTodoPriority}/>
                     <label class="custom-control-label" for="customRadio2">Medium</label>
                 </div>
+                {/* // Priority Form  Low*/}
                 <div class="custom-control custom-radio">
                     <input 
                         type="radio" 
