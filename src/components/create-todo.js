@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import moment from "moment";
-
+import axios from "axios";
 
 class CreateTodo extends Component {
 
@@ -63,6 +63,16 @@ class CreateTodo extends Component {
         console.log(`${this.state.todo_priority}`);
         console.log(`${this.state.todo_complete}`);
         console.log(`${this.state.todo_creation_date}`)
+
+        const newTodo = {
+            todo_description : this.state.todo_description,
+            // todo_creation_date = '',
+            // todo_expected_date = '',
+            todo_responsible : this.state.todo_responsible,
+            todo_priority : this.state.todo_priority,
+            todo_complete: this.state.todo_complete,
+            todo_creation_date: this.state.todo_creation_date
+        }
         
         this.state = {
             todo_description :'',
