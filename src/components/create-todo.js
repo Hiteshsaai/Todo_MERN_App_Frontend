@@ -73,7 +73,13 @@ class CreateTodo extends Component {
             todo_complete: this.state.todo_complete,
             todo_creation_date: this.state.todo_creation_date
         }
-        
+
+        axios.post('http://localhost:4000/todos/add', newTodo)
+            .then(res => console.log(res.data))
+            .catch(err => {
+                console.log(err)
+            });
+
         this.state = {
             todo_description :'',
             // todo_creation_date = '',
