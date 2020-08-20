@@ -54,6 +54,8 @@ class CreateTodo extends Component {
  
     }
 
+
+
     onSubmit(e){
         e.preventDefault();
 
@@ -107,8 +109,6 @@ class CreateTodo extends Component {
                         value = {this.state.todo_description}
                         onChange = {this.onChangeTodoDescription}/>
                 </div>
-                </form>
-                <form onSubmit= {this.onSubmit}>
                 {/* // Responsibility Form */}
                 <div class="form-group">
                     <input 
