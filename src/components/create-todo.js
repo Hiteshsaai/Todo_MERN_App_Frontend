@@ -91,6 +91,7 @@ class CreateTodo extends Component {
             todo_complete: false,
             todo_creation_date: ''
         }
+    this.props.history.push('/')
 
     }
 
