@@ -23,6 +23,7 @@ class TodoList extends Component {
     constructor(props){
         super()
         this.state = {todos: []}
+
     }
 
     componentDidMount(){
@@ -34,6 +35,8 @@ class TodoList extends Component {
             console.log(err)
         })
     }
+
+
 
     // componentDidUpdate() {
     //     axios.get('http://localhost:4000/todos/')
