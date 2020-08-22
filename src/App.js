@@ -20,12 +20,12 @@ class App extends Component{
             <img src = {logo} width = "50" height = "50" alt= "Todo App" />          
           </a>
           <Link to = "/" className = "navbar-brand" style = {{fontSize: "medium"}}> MERN-STACK TODO APP</Link>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-            <li class="nav-item">
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul className="navbar-nav mr-auto mt-2 mt-md-0">
+            <li className="nav-item">
               <Link to = "/" className = "nav-link" > Todos</Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link to = "/create" className = "nav-link"> Create Todo</Link>
             </li>
             </ul>
