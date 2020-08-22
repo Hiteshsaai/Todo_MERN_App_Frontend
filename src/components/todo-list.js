@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import '../index.css';
 
 const Todo = (props) => (
     <tr>
@@ -33,6 +34,17 @@ class TodoList extends Component {
             console.log(err)
         })
     }
+
+    // componentDidUpdate() {
+    //     axios.get('http://localhost:4000/todos/')
+    //     .then(response => {
+    //         this.setState({todos: response.data});
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     })   
+    // }
+
 
     todoList(){
         return this.state.todos.map((todo, i)=> {
