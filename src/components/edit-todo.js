@@ -20,6 +20,7 @@ class EditTodo extends Component {
         this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
         this.onChangeCompleted = this.onChangeCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onChangeDelete = this.onChangeDelete.bind(this);
 
     }
 
@@ -100,6 +101,14 @@ class EditTodo extends Component {
         this.props.history.push('/')
     }
 
+    onChangeDelete(e){
+        axios.delete("http://localhost:4000/todos/delete/"+this.props.match.params.id)
+            .then(res=> console.log(res))
+            .catch(err => console.log(err))
+        this.props.history.push('/')
+
+    };
+
 
     render(){
         return(
@@ -172,8 +181,11 @@ class EditTodo extends Component {
                         <input 
                             type = "submit" 
                             value = "Update Todo"
-                            className = "btn btn-dark"
+                            className = "btn btn-outline-dark"
                             />
+                    </div>
+                    <div className = 'form-group' style = {{marginTop: "20px"}}>
+                        <button type="button" className="btn btn-outline-danger" onClick ={this.onChangeDelete}>Delete</button>
                     </div>
                 </form>
             </div>
