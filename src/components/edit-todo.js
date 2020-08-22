@@ -18,25 +18,43 @@ class EditTodo extends Component {
         this.onChangeTodoDescription= this.onChangeTodoDescription.bind(this);
         this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
         this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
-        this.onChangeCompeleted = this.onChangeCompeleted.bind(this);
+        this.onChangeCompleted = this.onChangeCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
     }
 
     componentDidMount(){
-        axios.get("http://localhost:4000/edit"+this.props.match.params.id)
+        axios.get("http://localhost:4000/todos/"+this.props.match.params.id)
         .then(res => {
             this.setState({
-                todo_description: res.body.todo_description,
-                todo_responsible: res.body.todo_responsible,
-                todo_priority: res.body.todo_priority,
-                todo_creation_date: res.body.todo_creation_date,
-                todo_complete: res.body.todo_complete})
+                todo_description: res.data.todo_description,
+                todo_responsible: res.data.todo_responsible,
+                todo_priority: res.data.todo_priority,
+                todo_creation_date: res.data.todo_creation_date,
+                todo_complete: res.data.todo_complete})
         })
         .catch((err) => {
             console.log(err)
         })
     }
+
+    // componentDidMount() {
+    //     axios.get('http://localhost:4000/todos/'+this.props.match.params.id)
+    //         .then(response => {
+    //             this.setState({
+    //                 todo_description: response.data.todo_description,
+    //                 todo_responsible: response.data.todo_responsible,
+    //                 todo_priority: response.data.todo_priority,
+    //                 todo_creation_date: response.body.todo_creation_date,
+    //                 todo_completed: response.data.todo_completed
+    //             })
+    //         })
+    //         .catch(function(error) {
+    //             console.log(error)
+    //         })
+    // }
+
+
 
 
     onChangeTodoDescription(e) {
@@ -57,7 +75,7 @@ class EditTodo extends Component {
         })
     }
 
-    onChangeCompeleted(e){
+    onChangeCompleted(e){
         this.setState({
             todo_complete: !this.state.todo_complete
         })
@@ -68,11 +86,11 @@ class EditTodo extends Component {
         const obj = {
             todo_description: this.state.todo_description,
             todo_responsible: this.state.todo_responsible,
-            todo_priority: this.state.todo_responsible,
+            todo_priority: this.state.todo_priority,
             todo_complete: this.state.todo_complete
         };
-
-        axios.post("http://localhost:4000/update/"+ this.props.match.params.id, obj)
+        console.log(obj);
+        axios.post("http://localhost:4000/todos/update/"+ this.props.match.params.id, obj)
             .then(res => console.log(res.data))
             .catch(err => {
                 console.log(err)
@@ -88,7 +106,7 @@ class EditTodo extends Component {
             <div>
                 <h3> Update Todo</h3>
                 <form onSubmit= {this.onSubmit}>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label> Description: </label>
                         <input 
                             type="text" 
@@ -96,7 +114,7 @@ class EditTodo extends Component {
                             value = {this.state.todo_description}
                             onChange = {this.onChangeTodoDescription}/>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label> Responbility </label>
                         <input 
                             type="text" 
@@ -105,50 +123,50 @@ class EditTodo extends Component {
                             onChange = {this.onChangeTodoResponsible}/>
                     </div>
                     {/* // Priority Form  High*/}
-                    <div class="custom-control custom-radio">
+                    <div className="custom-control custom-radio">
                     <input 
                         type="radio" 
                         id="customRadio1"
                         name="customRadio" 
-                        class="custom-control-input"
+                        className="custom-control-input"
                         value = "High"
                         checked = {this.state.todo_priority === 'High'} // To check if the priority is set to high
                         onChange = {this.onChangeTodoPriority}/>
-                    <label class="custom-control-label" for="customRadio1">High</label>
+                    <label className="custom-control-label" htmlFor="customRadio1">High</label>
                     </div>
                     {/* // Priority Form  Medium*/}
-                    <div class="custom-control custom-radio">
+                    <div className="custom-control custom-radio">
                         <input 
                             type="radio" 
                             id="customRadio2"
                             name="customRadio" 
-                            class="custom-control-input"
+                            className="custom-control-input"
                             value = "Medium"
                             checked = {this.state.todo_priority === 'Medium'} // To check if the priority is set to medium
                             onChange = {this.onChangeTodoPriority}/>
-                        <label class="custom-control-label" for="customRadio2">Medium</label>
+                        <label className="custom-control-label" htmlFor="customRadio2">Medium</label>
                     </div>
                     {/* // Priority Form  Low*/}
-                    <div class="custom-control custom-radio">
+                    <div className="custom-control custom-radio">
                         <input 
                             type="radio" 
                             id="customRadio3"
                             name="customRadio" 
-                            class="custom-control-input"
+                            className="custom-control-input"
                             value = "Low"
                             checked = {this.state.todo_priority === 'Low'} // To check if the priority is set to low
                             onChange = {this.onChangeTodoPriority}/>
-                        <label class="custom-control-label" for="customRadio3">Low</label>
+                        <label className="custom-control-label" htmlFor="customRadio3">Low</label>
                     </div>
-                    <div class="custom-control custom-checkbox" style = {{marginTop: "20px"}}>
+                    <div className="custom-control custom-checkbox" style = {{marginTop: "20px"}}>
                         <input 
                             type="checkbox" 
-                            class="custom-control-input" 
+                            className="custom-control-input" 
                             id="customCheck1"
-                            onChange = {this.onChangeCompeleted}
+                            onChange = {this.onChangeCompleted}
                             checked = {this.state.todo_complete}
                             value = {this.state.todo_complete}/>
-                        <label class="custom-control-label" for="customCheck1">Completed</label>
+                        <label className="custom-control-label" htmlFor="customCheck1">Completed</label>
                     </div>
                     <div className = 'form-group' style = {{marginTop: "20px"}}>
                         <input 
