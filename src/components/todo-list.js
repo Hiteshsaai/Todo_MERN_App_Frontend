@@ -37,7 +37,6 @@ class TodoList extends Component {
     }
 
 
-
     // componentDidUpdate() {
     //     axios.get('http://localhost:4000/todos/')
     //     .then(response => {
