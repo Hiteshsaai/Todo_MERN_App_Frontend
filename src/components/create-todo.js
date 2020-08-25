@@ -13,7 +13,8 @@ class CreateTodo extends Component {
             todo_responsible : '',
             todo_priority : '',
             todo_complete: false,
-            todo_creation_date: ''
+            todo_creation_date: '',
+            todo_mod_date: "Not Modified"
         };
         this.onChangeTodoDescription= this.onChangeTodoDescription.bind(this);
         this.onChangeTodoPriority= this.onChangeTodoPriority.bind(this);
@@ -49,7 +50,7 @@ class CreateTodo extends Component {
 
         // }
         this.setState({
-            todo_creation_date: moment().format("DD-MM-YYYY")
+            todo_creation_date: moment().format("MM-DD-YYYY")
         });
  
     }
@@ -65,6 +66,7 @@ class CreateTodo extends Component {
         console.log(`${this.state.todo_priority}`);
         console.log(`${this.state.todo_complete}`);
         console.log(`${this.state.todo_creation_date}`)
+        console.log(`${this.state.todo_mod_date}`)
 
         const newTodo = {
             todo_description : this.state.todo_description,
@@ -73,7 +75,8 @@ class CreateTodo extends Component {
             todo_responsible : this.state.todo_responsible,
             todo_priority : this.state.todo_priority,
             todo_complete: this.state.todo_complete,
-            todo_creation_date: this.state.todo_creation_date
+            todo_creation_date: this.state.todo_creation_date,
+            todo_mod_date: this.state.todo_mod_date
         }
 
         axios.post('http://localhost:4000/todos/add', newTodo)
@@ -84,12 +87,11 @@ class CreateTodo extends Component {
 
         this.state = {
             todo_description :'',
-            // todo_creation_date = '',
-            // todo_expected_date = '',
             todo_responsible : '',
             todo_priority : '',
             todo_complete: false,
-            todo_creation_date: ''
+            todo_creation_date: '',
+            todo_mod_date: "Not Modified"
         }
     this.props.history.push('/')
 
