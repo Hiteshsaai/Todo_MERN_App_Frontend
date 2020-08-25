@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from "moment";
 import axios from 'axios';
 
 
@@ -12,7 +13,8 @@ class EditTodo extends Component {
             todo_responsible: '',
             todo_priority: '',
             todo_creation_date: '',
-            todo_complete: false
+            todo_complete: false,
+            todo_mod_date: 'Not Modified'
         }
 
         this.onChangeTodoDescription= this.onChangeTodoDescription.bind(this);
@@ -56,23 +58,27 @@ class EditTodo extends Component {
     // }
 
 
-
-
     onChangeTodoDescription(e) {
         this.setState({
-            todo_description: e.target.value
+            todo_description: e.target.value,
+            todo_mod_date: moment().format("MM-DD-YYYY")
         })
+
     }
 
     onChangeTodoResponsible(e){
         this.setState({
-            todo_responsible: e.target.value
+            todo_responsible: e.target.value,
+            todo_mod_date: moment().format("MM-DD-YYYY")
+
         })
     }
 
     onChangeTodoPriority(e){
         this.setState({
-            todo_priority: e.target.value
+            todo_priority: e.target.value,
+            todo_mod_date: moment().format("MM-DD-YYYY")
+
         })
     }
 
@@ -82,13 +88,23 @@ class EditTodo extends Component {
         })
     }
 
+
+    // componentWillReceiveProps() {
+    //     this.setState({
+    //       likesIncreasing: props.likeCount > this.props.likeCount
+    //     });
+    //   }
+
+
     onSubmit(e){
         e.preventDefault()
+
         const obj = {
             todo_description: this.state.todo_description,
             todo_responsible: this.state.todo_responsible,
             todo_priority: this.state.todo_priority,
-            todo_complete: this.state.todo_complete
+            todo_complete: this.state.todo_complete,
+            todo_mod_date: this.state.todo_mod_date
         };
         console.log(obj);
         axios.post("http://localhost:4000/todos/update/"+ this.props.match.params.id, obj)
