@@ -6,10 +6,11 @@ import '../index.css';
 const Todo = (props) => (
     <tr>
         <th scope = 'row'> {props.idx+1} </th>
-        <td  className = {props.todo.todo_complete ? "completed" : ""}>{props.todo.todo_description}</td>
+        <td className = {props.todo.todo_complete ? "completed" : ""}>{props.todo.todo_description}</td>
         <td className = {props.todo.todo_complete ? "completed" : ""}>{props.todo.todo_responsible}</td>
         <td className = {props.todo.todo_complete ? "completed" : ""}>{props.todo.todo_priority}</td>
         <td className = {props.todo.todo_complete ? "completed" : ""}>{props.todo.todo_creation_date}</td>
+        <td className = {props.todo.todo_complete ? "completed": ""}>{props.todo.todo_mod_date}</td>
         <td>
             <Link to={"/edit/"+props.todo._id}> Edit </Link>
         </td>
@@ -68,6 +69,7 @@ class TodoList extends Component {
                     <th>Priority</th>
                     {/* <th>Completed</th> */}
                     <th>Creation Date</th> 
+                    <th>Modification Date</th>
                     <th>Action</th>
                     </tr>
                 </thead>
