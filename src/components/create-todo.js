@@ -80,7 +80,10 @@ class CreateTodo extends Component {
         }
 
         axios.post('http://localhost:4000/todos/add', newTodo)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data);
+                this.props.history.push('/')
+            })
             .catch(err => {
                 console.log(err)
             });
@@ -93,7 +96,7 @@ class CreateTodo extends Component {
             todo_creation_date: '',
             todo_mod_date: "Not Modified"
         }
-    this.props.history.push('/')
+    // this.props.history.push('/')
 
     }
 

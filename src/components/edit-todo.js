@@ -108,20 +108,26 @@ class EditTodo extends Component {
         };
         console.log(obj);
         axios.post("http://localhost:4000/todos/update/"+ this.props.match.params.id, obj)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data);
+                this.props.history.push('/');
+
+            })
             .catch(err => {
                 console.log(err)
             });
         
         // once updated it will be go back to the todo list page
-        this.props.history.push('/')
+        // this.props.history.push('/')
     }
 
     onChangeDelete(e){
         axios.delete("http://localhost:4000/todos/delete/"+this.props.match.params.id)
-            .then(res=> console.log(res))
+            .then(res=> {
+                console.log(res);
+                this.props.history.push('/')
+            })
             .catch(err => console.log(err))
-        this.props.history.push('/')
 
     };
 
