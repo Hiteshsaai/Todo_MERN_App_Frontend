@@ -3,19 +3,22 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import '../index.css';
 
-const Todo = (props) => (
+const Todo = (props) => {
+    console.log(props.todo.todo_complete)
+    return (
     <tr>
         <th scope = 'row'> {props.idx+1} </th>
-        <td className = {props.todo.todo_complete ? "completed" : ""}>{props.todo.todo_description}</td>
-        <td className = {props.todo.todo_complete ? "completed" : ""}>{props.todo.todo_responsible}</td>
-        <td className = {props.todo.todo_complete ? "completed" : ""}>{props.todo.todo_priority}</td>
-        <td className = {props.todo.todo_complete ? "completed" : ""}>{props.todo.todo_creation_date}</td>
-        <td className = {props.todo.todo_complete ? "completed": ""}>{props.todo.todo_mod_date}</td>
+        <td className = {props.todo.todo_complete ? "completed" : ""}>  {props.todo.todo_description} </td>
+        <td className = {props.todo.todo_complete  ? "completed" : ""}>{props.todo.todo_responsible}</td>
+        <td className = {props.todo.todo_complete  ? "completed" : ""}>{props.todo.todo_priority}</td>
+        <td className = {props.todo.todo_complete  ? "completed" : ""}>{props.todo.todo_creation_date}</td>
+        <td className = {props.todo.todo_complete  ? "completed": ""}>{props.todo.todo_mod_date}</td>
         <td>
             <Link to={"/edit/"+props.todo._id}> Edit </Link>
         </td>
     </tr>
-)
+    )
+}
 
 
 
@@ -30,6 +33,7 @@ class TodoList extends Component {
     componentDidMount(){
         axios.get("http://localhost:4000/todos")
         .then(res => {
+            console.log(res.data)
             this.setState({todos: res.data})
         })
         .catch((err) => {

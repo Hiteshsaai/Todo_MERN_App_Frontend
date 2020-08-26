@@ -84,7 +84,9 @@ class EditTodo extends Component {
 
     onChangeCompleted(e){
         this.setState({
-            todo_complete: !this.state.todo_complete
+            todo_complete: !this.state.todo_complete,
+            todo_mod_date: moment().format("MM-DD-YYYY")
+
         })
     }
 
