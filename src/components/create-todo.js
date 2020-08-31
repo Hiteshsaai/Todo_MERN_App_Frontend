@@ -44,11 +44,7 @@ class CreateTodo extends Component {
     }
 
     onChangeTodoCreationDate() {
-        // let new_date = ''
-        // if (this.state.todo_description === ''){
-        //     new_date = moment().format("DD-MM-YYYY hh:mm:ss")
 
-        // }
         this.setState({
             todo_creation_date: moment().format("MM-DD-YYYY")
         });
