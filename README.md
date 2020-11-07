@@ -6,7 +6,7 @@ This is the fornt-end for the TODO app, check for [BACKEND](https://github.com/H
 
 Currenly i have the **back-end** working effectively. Front-end has some bug fix before deploying [Delaying due to my full time job]
 
-## Specification Used
+## Technology Used
 * Native React.
 * React Hooks.
 * Bootstrap.
